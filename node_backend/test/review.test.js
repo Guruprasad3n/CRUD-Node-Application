@@ -2,16 +2,37 @@ const chai = require("chai");
 const expect = chai.expect;
 const request = require("supertest");
 
-const app = require('../index');
+const app = require("../index");
 
 describe("Review Management", () => {
-  it("should add a review to a product", (done) => {
-    // Test adding a review to a product and assert the response
+  let createdProductId;
+
+  before((done) => {
+    // Create a product to be used in the test cases
+    const newProduct = {
+      name: "Test Product",
+      price: 19.99,
+    };
     request(app)
-      .post("/api/products/:productId/reviews")
-      .send({ userId: "user123", description: "Great product!" })
+      .post("/api/products")
+      .send(newProduct)
       .end((err, res) => {
-        expect(res.status).to.equal(201);
+        createdProductId = res.body.savedProduct._id;
+        done();
+      });
+  });
+
+  it("should create a review for a product", (done) => {
+    const review = {
+      userId: "user123",
+      description: "This product is great!",
+    };
+
+    request(app)
+      .post(`/api/products/${createdProductId}/reviews`)
+      .send(review)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
         expect(res.body).to.have.property(
           "message",
           "Review Added in Product Successful"
@@ -20,5 +41,22 @@ describe("Review Management", () => {
       });
   });
 
-  // Write more test cases for review management here
+  it("should handle creating a review for a non-existent product", (done) => {
+    const review = {
+      userId: "user123",
+      description: "This product is great!",
+    };
+
+    request(app)
+      .post("/api/products/nonexistentid/reviews")
+      .send(review)
+      .end((err, res) => {
+        expect(res.status).to.equal(500);
+        expect(res.body).to.have.property(
+          "message",
+          "Something Went Wrong While Creating Review"
+        );
+        done();
+      });
+  });
 });

@@ -10,9 +10,6 @@ const AddaProduct = async (req, res) => {
     const { name, price } = req.body;
     const product = new ProductModel({ name, price });
     const savedProduct = await product.save();
-
-
-    
     return res.status(201).send({ message: "Product added", savedProduct });
   } catch (e) {
     console.log(e);
@@ -170,10 +167,14 @@ const virtualPopulatioOfreview = async (req, res) => {
   try {
     const productId = req.params.productId;
     const product = await ProductModel.findById(productId).populate("reviews");
- if(!product){
-  return res.status(404).send({message:"Product Not Availabe or Not Found"})
- }
- return res.status(200).send({message:"Populate Reviews Successful", product})
+    if (!product) {
+      return res
+        .status(404)
+        .send({ message: "Product Not Availabe or Not Found" });
+    }
+    return res
+      .status(200)
+      .send({ message: "Populate Reviews Successful", product });
   } catch (e) {
     console.log(e);
     return res
