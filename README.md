@@ -115,13 +115,15 @@ Create RESTful API endpoints for the following operations:
     ```
 
 2. Install dependencies
+
 ```bash
 cd project-folder
 npm install
 ```
 
 ## Configuration
-Create a `.env` file for environment variables, such as the MongoDB connection string and the port.
+
+- Create a `.env` file for environment variables, such as the MongoDB connection string and the port.
 
 ```bash
 MONGODB_URI=your-mongodb-connection-string
@@ -129,6 +131,16 @@ PORT=5000
 ```
 
 ## Running the Application
+
 ```bash
 npm start
+```
+
+## Conclusion
+
+- This documentation provides an overview of the Product and Review Management System, its features, and technical requirements. It also includes instructions for setting up and running the project. Feel free to expand and customize this documentation to suit your specific project's needs.
+
+```bash
+
+You can create a `README.md` file in your project's root directory and paste the content provided above into it. Customize it further according to your project's specific details and requirements.
 ```
