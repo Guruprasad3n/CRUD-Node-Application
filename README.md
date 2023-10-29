@@ -112,3 +112,23 @@ Create RESTful API endpoints for the following operations:
 
    ```bash
    git clone https://github.com/Guruprasad3n/CRUD-Node-Application
+    ```
+
+2. Install dependencies
+```bash
+cd project-folder
+npm install
+```
+
+## Configuration
+Create a `.env` file for environment variables, such as the MongoDB connection string and the port.
+
+```bash
+MONGODB_URI=your-mongodb-connection-string
+PORT=5000
+```
+
+## Running the Application
+```bash
+npm start
+```
