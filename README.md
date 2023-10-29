@@ -84,30 +84,3 @@ Create RESTful API endpoints for the following operations:
     }
   ]
 }
-
-## Additional Considerations
-
-### Error Handling
-
-- Implement proper error handling for scenarios such as failed CRUD operations or data retrieval issues.
-
-### Testing
-
-- Implement unit tests to validate the functionality of key components, including product and review management.
-
-## Code Comments
-
-- Add comments in the code to explain complex logic or any crucial implementation details.
-
-## User Notifications
-
-- Consider incorporating user-friendly notifications for successful operations or other relevant interactions.
-
-## Usage
-
-### Installation
-
-1. Clone the repository from GitHub.
-
-   ```bash
-   git clone https://github.com/Guruprasad3n/CRUD-Node-Application
